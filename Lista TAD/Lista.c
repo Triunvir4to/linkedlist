@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <Lista.h"
+#include "Lista.h"
 
 Lista *ListaInserirNoFim(Lista *l1, int v){
     Lista *p, *Novo;
@@ -36,7 +36,7 @@ Lista *ListaExcluir(Lista *l1, int v){
     return l1;
 }
 
-int ListaBuscar(Lista *l1, int v){
+Lista *ListaBuscar(Lista *l1, int v){
     Lista *p;
     for(p = l1; p != NULL; p = p->prox){
         if(p->info == v)
@@ -52,7 +52,11 @@ void ListaImprimir(Lista *l1){
 }
 
 void ListaLiberar(Lista *l1){
-    for(lista *p = l1; p!= NULL; p = p->prox){
+    Lista *p, *t;
+    p = l1;
+    while(p != NULL){
+            t = p->prox;
         free(p);
+        p = t;
     }
 }
